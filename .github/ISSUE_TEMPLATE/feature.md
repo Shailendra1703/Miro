@@ -1,10 +1,9 @@
 ---
-name: Feature
+name: 💡Feature
 about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 **What**
