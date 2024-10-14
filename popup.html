@@ -1,36 +1,174 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ChatGPT Notifier</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-      }
-      h2 {
-        color: #4caf50;
-      }
-      p {
-        font-size: 16px;
-      }
-      .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h2>ChatGPT Notifier is active!</h2>
-      <p>You will be notified when ChatGPT completes its response.</p>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miro: ChatGPT Notification Extension</title>
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --background-light: #ffffff;
+      --background-dark: #1e1e1e;
+      --text-light: #333333;
+      --text-dark: #f5f5f5;
+      --switch-light: #d8dbe0;
+      --switch-dark: #28292c;
+    }
+
+    body {
+      width: 300px;
+      height: 400px;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-light);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background-color: var(--background-dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch-label {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--switch-dark);
+      border-radius: 12px;
+      cursor: pointer;
+      border: 2px solid var(--switch-dark);
+    }
+
+    .checkbox {
+      position: absolute;
+      display: none;
+    }
+
+    .slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .checkbox:checked ~ .slider {
+      background-color: var(--switch-light);
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      box-shadow: inset 6px -2px 0px 0px var(--switch-light);
+      background-color: var(--switch-dark);
+      transition: 0.3s;
+    }
+
+    .checkbox:checked ~ .slider::before {
+      transform: translateX(26px);
+      background-color: var(--switch-dark);
+      box-shadow: none;
+    }
+
+    /* Dark mode styles for the toggle */
+    body.dark-mode .switch-label {
+      background-color: var(--switch-light);
+      border-color: var(--switch-light);
+    }
+
+    body.dark-mode .checkbox:checked ~ .slider {
+      background-color: var(--switch-dark);
+    }
+
+    body.dark-mode .slider::before {
+      box-shadow: inset 6px -2px 0px 0px var(--switch-dark);
+      background-color: var(--switch-light);
+    }
+
+    body.dark-mode .checkbox:checked ~ .slider::before {
+      background-color: var(--switch-light);
+    }
+
+    .content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Miro: ChatGPT Notifier</h1>
+      <div class="toggle-switch">
+        <label class="switch-label">
+          <input type="checkbox" class="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
-  </body>
+    <div class="tagline">Stay in the loop, effortlessly.</div>
+    <div class="content">
+      <p>Miro keeps you informed when ChatGPT has a response ready, allowing you to multitask efficiently without missing a beat.</p>
+      <p>Simply enable notifications and let Miro handle the rest. Focus on your work while staying connected to your AI assistant.</p>
+    </div>
+    <div class="footer">
+      &copy; 2024 Miro Extension. All rights reserved.
+    </div>
+  </div>
+
+  <!-- Load the script from external file -->
+  <script src="popup.js"></script>
+</body>
 </html>
