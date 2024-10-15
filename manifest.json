@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Response Notifier",
-  "version": "1.0",
+  "name": "Miro",
+  "description": "Miro is an open-source Chrome extension that notifies users when ChatGPT has finished generating a response.",
+  "version": "1.1.0",
   "permissions": ["notifications", "activeTab", "scripting", "tabs", "background"],
   "content_scripts": [
     {
