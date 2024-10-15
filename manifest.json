@@ -6,7 +6,7 @@
   "permissions": ["notifications", "activeTab", "scripting", "tabs", "background"],
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*","https://claude.ai/*"],
       "js": ["content.js"]
     }
   ],
