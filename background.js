@@ -6,6 +6,7 @@ const filters = {
     urls: ["https://chatgpt.com/*", "https://chat.openai.com/*"],
 };
 
+// Function to send notifications
 function sendNotification(details) {
     chrome.notifications.create({
         type: "basic",
@@ -13,6 +14,7 @@ function sendNotification(details) {
     });
 }
 
+// Function to send runtime messages
 function sendMessage(message) {
     chrome.runtime.sendMessage({ message }, (response) => {
         if (chrome.runtime.lastError) {
@@ -23,16 +25,10 @@ function sendMessage(message) {
     });
 }
 
+// Message handler for different response states
 function messageHandler(request, sender, sendResponse) {
     // Notify user when response is streaming and completed
-    if (request.message === RESPONSE_STREAMING) {
-        console.log("Miro: Reponse is being streamed");
-        sendNotification({
-            iconUrl: "images/icon128.png",
-            title: "ChatGPT Response Streaming",
-            message: "ChatGPT is streaming its response.",
-        });
-    } else if (request.message === RESPONSE_COMPLETED) {
+    if (request.message === RESPONSE_COMPLETED) {
         console.log("Miro: Response is completed");
         sendNotification({
             iconUrl: "images/icon128.png",
@@ -55,7 +51,26 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
-// Listening network request for conversation
+// Listener for runtime messages
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.message === "responseComplete") {
+        console.log("Received ChatGPT message in background script");
+        sendResponse({ status: "notification sent" });
+    } else if (request.message === "claudeResponseComplete") {
+        console.log("Received Claude message in background script");
+        chrome.notifications.create({
+            type: "basic",
+            iconUrl: "images/icon128.png",
+            title: "Claude Response Complete",
+            message: "Claude has finished its response.",
+        });
+        sendResponse({ status: "notification sent" });
+    } else {
+        sendResponse({ status: "unknown message" });
+    }
+});
+
+// Listening for network requests for conversation
 chrome.webRequest.onBeforeSendHeaders.addListener(
     (details) => {
         if (details.url === CONVERSATION_URL) {
