@@ -56,11 +56,11 @@ function messageHandler(request, sender, sendResponse) {
 
   if (message === RESPONSE_STREAMING) {
     console.log(`Miro: Reponse is being streamed by ${platform}`);
-    sendNotification({
-      iconUrl: "images/icon128.png",
-      title: platform,
-      message: `${platform} is streaming its response.`,
-    });
+    // sendNotification({
+    //   iconUrl: "images/icon128.png",
+    //   title: platform,
+    //   message: `${platform} is streaming its response.`,
+    // });
   } else if (message === RESPONSE_COMPLETED) {
     console.log(`Miro: Response is completed by ${platform}`);
     sendNotification({
