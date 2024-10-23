@@ -1,10 +1,10 @@
 # Miro
 
-Miro is an open-source Chrome extension that notifies users when ChatGPT has finished generating a response.
+Miro is an open-source Chrome extension that notifies users when ChatGPT or Claude.AI has finished generating a response.
 
 ## Features
 
-- **Real-time Notifications**: Get notified instantly when ChatGPT completes its response.
+- **Real-time Notifications**: Get notified instantly when ChatGPT or Claude.AI completes its response.
 - **Open Source**: Miro is fully open-source, allowing developers to contribute and improve the extension.
 
 ## Project Setup
@@ -44,8 +44,9 @@ To install Miro in your Chrome browser, follow these steps:
 
 Miro requires the following permissions:
 
-- `activeTab`: To interact with the currently active tab.
+- `background`: To monitor Web Request (HTTP Request) in background.
 - `notifications`: To send desktop notifications when a response is complete.
+- `webRequest`: To monitor Web Request Events.
 
 ## Contributing
 
