@@ -59,9 +59,4 @@ Contributions to Miro are welcome! If you would like to contribute, please follo
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to the contributors of the open-source community for their continued support and improvements.
-- Special thanks to [OpenAI](https://openai.com/) for developing ChatGPT.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Shailendra1703/Miro/blob/master/LICENSE.md) file for details.
