@@ -1,10 +1,19 @@
 {
     "manifest_version": 3,
     "name": "Miro",
-    "description": "Miro is an open-source Chrome extension that notifies users when ChatGPT has finished generating a response.",
+    "description": "Miro is an open-source Chrome extension that notifies users when ChatGPT or Claude.AI has finished generating a response.",
     "version": "1.2.0",
+    "icons": {
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
     "permissions": ["notifications", "background", "webRequest"],
-    "host_permissions": ["https://chatgpt.com/*", "https://chat.openai.com/*", "https://api.claude.ai/*", "https://claude.ai/*"],
+    "host_permissions": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://api.claude.ai/*",
+        "https://claude.ai/*"
+    ],
     "background": {
         "service_worker": "background.js"
     },
